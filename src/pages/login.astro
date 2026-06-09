@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Login from '../components/Login';
+
+const pageTitle = "Login - CodeLearn";
+const pageDescription = "Sign in to your CodeLearn account and continue learning.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header client:load />
+  
+  <main class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to continue learning</p>
+      </div>
+
+      <Login client:load />
+
+      <div class="auth-divider">
+        <span>or continue with</span>
+      </div>
+
+      <div class="social-login">
+        <button class="social-btn" onclick="alert('OAuth integration coming soon')">
+          <span>🔵</span> Google
+        </button>
+        <button class="social-btn" onclick="alert('OAuth integration coming soon')">
+          <span>🦇</span> GitHub
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        <a href="/forgot-password" class="forgot-link">Forgot password?</a>
+      </div>
+    </div>
+  </main>
+
+  <Footer client:load />
+</Layout>
+
+<style>
+  .auth-container {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-lighter) 0%, white 100%);
+    padding: var(--space-lg);
+  }
+
+  .auth-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: var(--space-2xl);
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .auth-header {
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+  }
+
+  .auth-header h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .auth-header p {
+    color: var(--neutral-600);
+  }
+
+  .auth-divider {
+    position: relative;
+    text-align: center;
+    margin: var(--space-lg) 0;
+  }
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: var(--neutral-300);
+  }
+
+  .auth-divider::before {
+    left: 0;
+  }
+
+  .auth-divider::after {
+    right: 0;
+  }
+
+  .auth-divider span {
+    background: white;
+    padding: 0 var(--space-md);
+    color: var(--neutral-600);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+  }
+
+  .social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border: 2px solid var(--neutral-300);
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--neutral-700);
+    transition: all 0.2s ease;
+  }
+
+  .social-btn:hover {
+    border-color: var(--primary);
+    background-color: var(--neutral-50);
+  }
+
+  .auth-footer {
+    margin-top: var(--space-xl);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--neutral-600);
+  }
+
+  .auth-footer p {
+    margin-bottom: var(--space-md);
+  }
+
+  .auth-footer a {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .forgot-link {
+    display: inline-block;
+    margin-top: var(--space-sm);
+  }
+</style>
